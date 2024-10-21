@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -15,7 +14,7 @@ const Register = () => {
   });
 
   const [errors, setErrors] = useState([]);
-  const history = useHistory();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,9 +43,7 @@ const Register = () => {
       const data = await response.json();
       console.log('Registration successful:', data);
       toast.success('Cadastro realizado com sucesso!'); // Show success toast
-      setTimeout(() => {
-        history.push('/login'); // Redirect to login page after success
-      }, 2000);
+     
     } catch (error) {
       console.error('Error during registration:', error);
       setErrors(['Error during registration. Please try again.']);
